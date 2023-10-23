@@ -1,82 +1,88 @@
-import React from 'react'
-import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom'; 
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import email from '../../src/img/email.png';
+import password from '../../src/img/password.png';
+import { useAuth } from '../context/authContext';
+import AnimatedIcon from '../components/AnimatedIcon'
 
-import usuario from '../../src/img/usuario.png'
-import password from '../../src/img/password.png'
+import '../styles/UserRegister.css';
 
-import '../styles/Login.css'
+const Login = () => {
+  const [user, setUser] = useState({
+    nombre: '',
+    email: '',
+    password: '',
+  });
 
-  
-    const Login = () => {
-      const { register, handleSubmit, formState: { errors } } = useForm();
-     console.log(errors)
 
-     console.log(getAuth)
+  const [error,setError] = useState ('')
 
-     const onSubmit = handleSubmit(async (data) => {
-      const { email, password } = data;
-      try {
-        await createUserWithEmailAndPassword(getAuth,email,password);
-        console.log("Inicio de sesión exitoso");
-        // Redirigir al usuario a la página de inicio o a donde sea necesario
-      } catch (error) {
-        console.error("Error al iniciar sesión:", error.message);
-        // Manejar errores de inicio de sesión
-      }
-    });
-    
-      // const onSubmit = 
-      //   handleSubmit ((data) =>{
-      //  console.log(data)
-      //   })
-    
-      return (
-        <form className="form" onSubmit={onSubmit}>
-           <h2>Inicia sesión</h2>
-          <div className="container">
-            <div className="input_email">
-            <img src={usuario} width="25px"/>
-              <input
-                type="text"
-                placeholder='Email'
-                // className={styles.input_form}
-                {...register('Email', {
-                  required:true,
-                  pattern: /\S+@\S+\.\S+/ })}
-              />
-              </div>
-              {errors.Email?.type === 'required' && (
-                <p className="error_msg">Ingresa un email válido.</p>
-              )}
-            
-    
-            <div className="input_contraseña">
-            <img src={password} width="25px"/>
-              <input
-                type="password"
-                placeholder='Contraseña'
-                {...register('password', { 
-                  required: true, maxLength: 10 })}
-              />
-              </div>
-              {errors.password?.type === 'maxLength' && (
-                <p className="error_msg">La contraseña no debe tener más de 10 caracteres.</p>
-              )}
-  
-    
-            <button className="btn_login" type="submit">Iniciar sesión</button>
-    
-            <div className="registrer">
-              <p className='text_p'>¿No tienes cuenta?</p>
-            
-              <Link to = "/registro" className='link_register'>Regístrate</Link>
+  const navigate = useNavigate()
+  const { login } = useAuth();
 
-            </div>
-          </div>
-        </form>
-      );
+  // Función para actualizar el estado
+  const handleChange = ({ target: { name, value } }) => {
+    setUser({ ...user, [name]: value });
+  };
+
+  // Función para enviar los datos
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validar la dirección de correo electrónico antes de registrarse
+    if (!isValidEmail(user.email)) {
+      setError('Dirección de correo electrónico no válida');
+            return;
     }
-    
-    export default Login;
+
+   login(user.email, user.password);
+    console.log('Correo electrónico:', user.email);
+    navigate('/')
+  };
+
+  // Función para validar la dirección de correo electrónico
+  const isValidEmail = (email) => {
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+    return emailRegex.test(email);
+  };
+
+  return (
+    <>
+    <div className='container_icon'>
+    <AnimatedIcon/>
+    </div>
+    <form className="form" onSubmit={handleSubmit}>
+      <div className="container">
+        <div className="input_email">
+          <img src={email} width="25px" alt="Email icon" />
+          <input
+            type="text"
+            name="email" // Coincide con la clave en el estado
+            placeholder="Email"
+            className="input_email"
+            onChange={handleChange}
+          />
+           {/* Mostrar el mensaje de error */}
+           <span style={{color:'white'}}>{error}</span>
+        </div>
+
+        <div className="input_contraseña">
+          <img src={password} width="25px" alt="Password icon" />
+          <input
+            type="password"
+            name="password" // Coincide con la clave en el estado
+            placeholder="Contraseña"
+            onChange={handleChange}
+          />
+        </div>
+
+        <button className="btn_login" type="submit">
+          Login
+        </button>
+      </div>
+    </form>
+    </>
+  );
+};
+
+export default Login;

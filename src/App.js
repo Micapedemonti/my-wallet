@@ -4,6 +4,7 @@ import UserRegister from './components/UserRegister.js';
 import { Home } from './components/Home';
 import Login from './pages/Login';
 import { AuthProvider } from './context/authContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
     
      <BrowserRouter>
       <Routes>
-      <Route path = "/" element = {<Home/>}/>
+      <Route path = "/" element = {<ProtectedRoute>
+        <Home/>
+        </ProtectedRoute>}/>
       <Route path = "/login" element = {<Login/>}/>
       <Route path = "/registro" element = {<UserRegister/>}/>
       </Routes>
