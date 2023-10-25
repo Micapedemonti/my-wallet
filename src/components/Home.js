@@ -62,16 +62,30 @@ if (loading) return <h1 style={{color:"white"}}>Loading</h1>
     </div>
 
     <div className='body_container'>
-    return(
-  <div style={{color: "white"}}>
-  <h1>Control de Gastos</h1>
-  <h3>Balance Total: {saldoTotal}</h3>
+
+      <>
+
+  <div className='container_home'>
+
+   <div className='seccion_1'>
+  <h3> SALDO: {saldoTotal}</h3>
+  <div className='seccion_1_b'>
+    <div className='ingresos'>
+     <h1>INGRESOS</h1>
+    </div>
+    <div className='gastos'>
+    <h1>GASTOS</h1>
+      </div>
+  </div>
+  </div>
+  <div className='seccion_2'>
       <GastoForm onGastoAgregado={agregarGasto} />
       <ListaGastos gastos={gastos} />
+    </div>   
       
 
   </div>
-);
+  </>
 
     
     </div>

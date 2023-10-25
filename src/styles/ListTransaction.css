@@ -1,0 +1,40 @@
+
+.container_transactions h2{
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+.transactions_list{
+    margin-top: 2rem;
+    list-style: none;
+    margin-top: 1rem;
+    text-align: left;
+    /* border: 0.5px solid; */
+    border-radius: 10px;
+    margin: 1rem;
+}
+.transaction{
+  margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 3rem;
+    background: #5f9ea040;
+    padding: 0.7rem;
+}
+.transaction h1{
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.transaction p{
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+
+}
+.container_transactions{
+width: 50%;
+margin-top: 2rem;
+}

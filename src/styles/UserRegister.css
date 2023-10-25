@@ -16,7 +16,7 @@
     width: 400px;
     text-align: center;
     padding: 2rem;
-    background: #5d5c5d;
+    background: white;
     box-shadow: -3px 2px 5px 2px rgba(0,0,0,0.53);
     -webkit-box-shadow: 1px 2px 7px 2px rgba(0,0,0,0.53);
     -moz-box-shadow: -3px 2px 5px 2px rgba(0,0,0,0.53);
@@ -32,7 +32,7 @@
 }
 .input_email input{
     padding: 1rem;
-    background-color:#696969;
+    background-color:#e7e7e7;
     width: 85%;
     border: none;
     border-radius: 3px;
@@ -57,7 +57,7 @@
 }
 .input_contraseña input{
     padding: 1rem;
-    background-color:#696969;
+    background-color:#e7e7e7;
     width: 85%;
     border: none;
     border-radius: 3px;
@@ -78,7 +78,7 @@
     width: 100%;
     padding: 1rem;
     margin-top: 4rem;
-    background-color: #33eb32;
+    background-color: cadetblue;
     border: none;
     border-radius: 3px;
     color: white;
