@@ -1,32 +1,38 @@
 
 .container_transactions h2{
-    font-size: 15px;
+    font-size: 17px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
+    color: #539396;
 }
 .transactions_list{
     margin-top: 2rem;
     list-style: none;
     margin-top: 1rem;
     text-align: left;
-    /* border: 0.5px solid; */
     border-radius: 10px;
     margin: 1rem;
+    max-height: 240px;
+    overflow-y: auto;
 }
+
 .transaction{
-  margin: 1rem;
+  margin: 0.2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-right: 3rem;
-    background: #5f9ea040;
+    background: #5f9ea096;
     padding: 0.7rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
 }
 .transaction h1{
     font-size: 12px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 400;
+    color: white;
+    width: 200px;
 }
 
 .transaction p{
@@ -36,5 +42,9 @@
 }
 .container_transactions{
 width: 50%;
-margin-top: 2rem;
+margin-top: 1rem;
+}
+.btn_delete{
+    background: none;
+    border: none;
 }

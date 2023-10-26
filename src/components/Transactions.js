@@ -31,6 +31,7 @@ const GastoForm = ({ onGastoAgregado }) => {
           onChange={(e) => setDescripcion(e.target.value)}
         />
         <input  className='input_form'
+        step='0.01'
           type="number"
           placeholder="Monto"
           value={monto}

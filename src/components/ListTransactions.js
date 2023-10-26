@@ -1,8 +1,13 @@
 import React from 'react';
 import '../styles/ListTransaction.css'
+import Delete from '../img/borrar.png'
 
 
-const ListaGastos = ({ gastos }) => {
+
+const ListaGastos = ({ gastos, eliminarGasto }) => {
+  const gastosList = gastos.filter((gasto) => gasto.monto < 0);
+  const ingresosList = gastos.filter((gasto) => gasto.monto > 0);
+  
   return (
     <div className='container_transactions'>
       <h2>Ultimas transacciones</h2>
@@ -10,6 +15,10 @@ const ListaGastos = ({ gastos }) => {
         {gastos.map((gasto, index) => (
           <li className="transaction" key={index}>
             <h1>{gasto.descripcion}:</h1>  <p>{gasto.monto > 0 ? `+${gasto.monto}` : gasto.monto}</p>
+            <button onClick={() => eliminarGasto(index)} className='btn_delete'>
+            <img src={Delete} alt='delete' width="20px" />
+            </button>
+
           </li>
         ))}
       </ul>
