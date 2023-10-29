@@ -9,14 +9,23 @@
    font-family: 'Roboto', sans-serif;
    color: white;
 }
-
+.title_login{
+   text-align: center;
+   margin-top: 3rem;
+}
+.title_login h1 {
+   color: cadetblue;
+   text-transform: uppercase;
+   font-family: 'Roboto', sans-serif;
+   font-size: 23px;
+}
 .container{
    margin-top: 3rem;
    height: 300px;
    width: 400px;
    text-align: center;
    padding: 2rem;
-   background: #5d5c5d;
+   background:white;
    box-shadow: -3px 2px 5px 2px rgba(0,0,0,0.53);
    -webkit-box-shadow: 1px 2px 7px 2px rgba(0,0,0,0.53);
    -moz-box-shadow: -3px 2px 5px 2px rgba(0,0,0,0.53);
@@ -32,7 +41,7 @@
 }
 .input_email input{
    padding: 1rem;
-   background-color:#696969;
+   background-color:#69696929;
    width: 85%;
    border: none;
    border-radius: 3px;
@@ -57,7 +66,7 @@
 }
 .input_contraseña input{
    padding: 1rem;
-   background-color:#696969;
+   background-color:#69696929;
    width: 85%;
    border: none;
    border-radius: 3px;
@@ -78,7 +87,7 @@
    width: 100%;
    padding: 1rem;
    margin-top: 4rem;
-   background-color: #33eb32;
+   background-color:cadetblue;
    border: none;
    border-radius: 3px;
    color: white;
@@ -89,7 +98,7 @@
    -webkit-transition: all 0.5s;
 }
 .btn_login:hover{
-   background-color: #13f113;
+   background-color:rgb(58, 164, 168);
    box-shadow: 0 0 20px #6fc5ff50;
    transform: scale(1.1);
 }
@@ -124,4 +133,13 @@
    font-weight: bolder;
    font-family: 'Roboto', sans-serif;
    font-size: 13px
+}
+.password-reset {
+   text-align: left;
+   margin-top: 0.3rem;
+}
+.password-reset a {
+   color: cadetblue;
+   font-family: 'Roboto', sans-serif;
+   font-size: 13px;
 }

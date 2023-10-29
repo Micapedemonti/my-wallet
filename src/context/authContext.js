@@ -1,6 +1,6 @@
 
 import { createContext, useContext, useEffect, useState,useReducer } from "react";
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut,sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../FirebaseConfig";
 import AppReducer from "./AppReducer";
 
@@ -24,20 +24,10 @@ export function AuthProvider({ children }) {
     const [loading,setLoading] = useState(true)
     const [state,dispatch] = useReducer(AppReducer,initialState)
 
-  const signup = async (email, password) => {
-    // Realiza la validación de la dirección de correo electrónico antes de llamar a createUserWithEmailAndPassword
-    if (!isValidEmail(email)) {
-      console.error("Dirección de correo electrónico no válida");
-      return;
-    }
+    const signup = (email, password) => {
+      return createUserWithEmailAndPassword(auth, email, password);
+    };
 
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-     alert('USUARIO REGISTRADO CORRECTAMENTE')
-    } catch (error) {
-      console.error("Error al registrar usuario:", error.message);
-    }
-  }
   const login = async (email,password) => 
    signInWithEmailAndPassword(auth, email,password)
 
@@ -50,11 +40,9 @@ export function AuthProvider({ children }) {
        })
     },[])
 
-  const isValidEmail = (email) => {
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-    return emailRegex.test(email);
-  };
-
+    const resetPassword = (email) =>{
+   sendPasswordResetEmail (auth,email)
+    }
 
   const addTransaccion = (transaccion) =>{
    dispatch ({
@@ -63,7 +51,7 @@ export function AuthProvider({ children }) {
    })
   }
   return (
-    <authContext.Provider value={{ signup,login, user,logout,loading,transacciones:state.transaccion,addTransaccion }}>
+    <authContext.Provider value={{ signup,login, user,logout,loading,transacciones:state.transaccion,addTransaccion,resetPassword }}>
       {children}
     </authContext.Provider>
   );

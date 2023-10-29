@@ -1,7 +1,6 @@
 import React from 'react'
 import '../styles/Home.css'
 import { useState,useEffect } from 'react'
-// import { useContext } from 'react'
 import { useAuth } from '../context/authContext'
 import Logout from '../img/Logout.png'
 import usuario from '../img/usuario.png'
@@ -62,6 +61,10 @@ const gastosList = getGastos();
 const ingresosList = getIngresos();
 
 
+const handleLogout = async () =>{
+  await logout()
+
+};
 
   useEffect(() => {
     const gastosGuardados = JSON.parse(localStorage.getItem('gastos'));
@@ -88,7 +91,7 @@ const ingresosList = getIngresos();
           </button>
         </div>
         <div class="sign">
-          <button class="Btn">
+          <button class="Btn" onClick={handleLogout}>
             <img src={Logout} alt='logout' width="20px" className='img_btn' />
             <div class="text">Logout</div>
           </button>
@@ -124,8 +127,6 @@ const ingresosList = getIngresos();
         <div className='seccion_2'>
           <GastoForm onGastoAgregado={agregarGasto} />
           <ListaGastos gastos={gastos} eliminarGasto={eliminarGasto} />
-
-          {/* <ListaGastos gastos={gastos} eliminarGasto={eliminarGasto} /> */}
         </div>
       </div>
     </div>
