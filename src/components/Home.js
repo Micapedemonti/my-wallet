@@ -127,6 +127,7 @@ const handleLogout = async () =>{
         <div className='seccion_2'>
           <GastoForm onGastoAgregado={agregarGasto} />
           <ListaGastos gastos={gastos} eliminarGasto={eliminarGasto} />
+
         </div>
       </div>
     </div>

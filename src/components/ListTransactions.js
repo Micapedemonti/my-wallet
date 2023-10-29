@@ -5,7 +5,8 @@ import Delete from '../img/borrar.png'
 
 
 const ListaGastos = ({ gastos, eliminarGasto }) => {
-
+  const gastosList = gastos.filter((gasto) => gasto.monto < 0);
+  const ingresosList = gastos.filter((gasto) => gasto.monto > 0);
   
   return (
     <div className='container_transactions'>

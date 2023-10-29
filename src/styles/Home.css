@@ -312,3 +312,30 @@
   height: 350px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
  }
+
+
+
+
+ @media screen and (max-width: 990px) {
+  .seccion_1 {
+    height: 700px;
+}
+  .seccion_1_b {
+    display: flex;
+    flex-wrap: wrap;
+    /* height: 100%; */
+    margin-top: 5%;
+    align-items: center;
+    justify-content: center;
+}
+.ingresos{
+  height: 180px;
+}
+.balance{
+  height: 180px;
+}
+.gastos{
+  height: 180px;
+}
+}
+
